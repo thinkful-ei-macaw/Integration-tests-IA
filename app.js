@@ -12,7 +12,7 @@ app.get("/app", (req, res) => {
   if (sort) {
     if (!(sort === "Rating") && !(sort === "App")) {
       res.status(400).send("sort should either be by app or rating");
-    } else if (sort) {
+    } else {
       results.sort((a, b) => {
         return a[sort] < b[sort] ? 1 : a[sort] > b[sort] ? -1 : 0;
       });
@@ -38,6 +38,4 @@ app.get("/app", (req, res) => {
   res.json(results);
 });
 
-app.listen(8000, () => {
-  console.log("llistening on 8000");
-});
+module.exports = app;
